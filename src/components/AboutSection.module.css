@@ -1,0 +1,106 @@
+.section {
+    padding: 6rem 0;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+}
+
+@media (min-width: 900px) {
+    .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        text-align: left;
+    }
+}
+
+.imageWrapper {
+    position: relative;
+    width: 380px;
+    height: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* Golden Glow Effect */
+/* Golden Glow Effect */
+.glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(218, 165, 32, 0.8) 0%, rgba(218, 165, 32, 0.2) 60%, transparent 75%);
+    z-index: -1;
+    border-radius: 50%;
+    animation: pulse 4s infinite ease-in-out;
+    filter: blur(30px);
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+
+    100% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+}
+
+.logo {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 8px 12px rgba(218, 165, 32, 0.4)) brightness(1.1);
+}
+
+.textContent {
+    flex: 1;
+    max-width: 600px;
+    text-align: center;
+}
+
+@media (min-width: 900px) {
+    .textContent {
+        text-align: left;
+    }
+}
+
+.title {
+    font-size: 2.5rem;
+    font-family: var(--font-heading);
+    margin-bottom: 1.5rem;
+    color: var(--color-earth);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.description {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #4A4A4A;
+}

@@ -1,27 +1,17 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --foreground-rgb: 44, 36, 27;
+  /* Dark Earth */
+  --background-start-rgb: 249, 247, 242;
+  /* Whitewash */
+  --background-end-rgb: 255, 255, 255;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --color-gold: #C6A45C;
+  --color-gold-hover: #D4B670;
+  --color-earth: #2C241B;
+  --color-clay: #8B4513;
+  --color-sand: #E6DCC3;
+  --color-wine: #722F37;
+  --color-white: #FFFFFF;
 }
 
 * {
@@ -30,13 +20,35 @@ body {
   margin: 0;
 }
 
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: var(--font-body);
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
 }
