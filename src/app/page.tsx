@@ -5,6 +5,7 @@ import MenuSection from '@/components/MenuSection';
 import BookingWidget from '@/components/BookingWidget';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import Footer from '@/components/Footer';
+import CookieConsent from '@/components/CookieConsent';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <BookingWidget />
       <TestimonialsSection />
       <Footer />
+      <CookieConsent />
     </main>
   );
 }

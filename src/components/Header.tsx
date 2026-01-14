@@ -37,6 +37,8 @@ export default function Header() {
                 <button
                     className={styles.mobileToggle}
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    aria-label={isMobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+                    aria-expanded={isMobileMenuOpen}
                 >
                     {isMobileMenuOpen ? <X /> : <Menu />}
                 </button>
