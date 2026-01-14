@@ -23,7 +23,7 @@ export default function Header() {
             <div className={styles.container}>
                 <Link href="/" className={styles.logo}>
                     <div className={styles.logoWrapper}>
-                        <Image src="/images/costeleta_logo.png" alt="Costeleta Dourada" width={55} height={55} className={styles.logoImg} />
+                        <Image src="/images/costeleta-logo.png" alt="Costeleta Dourada" width={55} height={55} className={styles.logoImg} />
                         <span>Costeleta Dourada</span>
                     </div>
                 </Link>

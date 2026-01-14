@@ -8,7 +8,7 @@ export default function Hero() {
             <div className={styles.overlay}></div>
             <div className={styles.logoWatermark}>
                 <Image
-                    src="/images/costeleta_logo.png"
+                    src="/images/costeleta-logo.png"
                     alt=""
                     width={600}
                     height={600}
