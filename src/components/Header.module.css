@@ -112,4 +112,18 @@
     .mobileToggle {
         display: block;
     }
+
+    .logo {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+
+    .logoWrapper {
+        gap: 0.5rem;
+    }
+
+    .logoImg {
+        width: 40px !important;
+        height: 40px !important;
+    }
 }
