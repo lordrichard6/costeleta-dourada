@@ -11,7 +11,7 @@ export default function AboutSection() {
                 <div className={styles.imageWrapper}>
                     <div className={styles.glow}></div>
                     <Image
-                        src="/images/costeleta-logo.png"
+                        src="/images/costeleta-logo.webp"
                         alt="Costeleta Dourada Logo"
                         width={380}
                         height={380}

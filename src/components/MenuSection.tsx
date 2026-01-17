@@ -7,12 +7,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import styles from './MenuSection.module.css';
 
 const DAILY_SPECIALS = [
-    { day: 'Segunda', dish: 'Cozido de Grão', price: '12€', desc: 'Grão cozido com carne de porco, enchidos regionais, batata e abóbora.', image: '/images/cozido-de-grao.png' },
-    { day: 'Terça', dish: 'Sopa de Cação', price: '14€', desc: 'Sopa aromática de cação com coentros, alho, pão alentejano e azeite.', image: '/images/sopa-de-cacao.png' },
-    { day: 'Quarta', dish: 'Migas com Entrecosto', price: '15€', desc: 'As tradicionais migas de pão com entrecosto frito em banha e alho.', image: '/images/migas-com-entrecosto.png' },
-    { day: 'Quinta', dish: 'Ensopado de Borrego', price: '16€', desc: 'Estufado rico de borrego servido sobre fatias de pão caseiro.', image: '/images/ensopado-de-borrego.png' },
-    { day: 'Sexta', dish: 'Bacalhau Dourado', price: '15€', desc: 'Bacalhau desfiado com batata palha, ovos e salsa.', image: '/images/bacalhau-dourado.png' },
-    { day: 'Sábado', dish: 'Carne de Porco à Alentejana', price: '18€', desc: 'O ex-libris da casa: carne marinada, amêijoas e batata frita.', image: '/images/carne-de-porco-alentejana.png' },
+    { day: 'Segunda', dish: 'Cozido de Grão', price: '12€', desc: 'Grão cozido com carne de porco, enchidos regionais, batata e abóbora.', image: '/images/cozido-de-grao.webp' },
+    { day: 'Terça', dish: 'Sopa de Cação', price: '14€', desc: 'Sopa aromática de cação com coentros, alho, pão alentejano e azeite.', image: '/images/sopa-de-cacao.webp' },
+    { day: 'Quarta', dish: 'Migas com Entrecosto', price: '15€', desc: 'As tradicionais migas de pão com entrecosto frito em banha e alho.', image: '/images/migas-com-entrecosto.webp' },
+    { day: 'Quinta', dish: 'Ensopado de Borrego', price: '16€', desc: 'Estufado rico de borrego servido sobre fatias de pão caseiro.', image: '/images/ensopado-de-borrego.webp' },
+    { day: 'Sexta', dish: 'Bacalhau Dourado', price: '15€', desc: 'Bacalhau desfiado com batata palha, ovos e salsa.', image: '/images/bacalhau-dourado.webp' },
+    { day: 'Sábado', dish: 'Carne de Porco à Alentejana', price: '18€', desc: 'O ex-libris da casa: carne marinada, amêijoas e batata frita.', image: '/images/carne-de-porco-alentejana.webp' },
 ];
 
 const MENU_ITEMS = [

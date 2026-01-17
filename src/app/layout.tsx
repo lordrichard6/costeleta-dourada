@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/hero_bg.png',
+        url: '/images/hero_bg.webp',
         width: 1200,
         height: 630,
         alt: 'Costeleta Dourada - Restaurante Alentejano',
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Costeleta Dourada | Sabor do Alentejo',
     description: 'Restaurante tradicional Alentejano em Évora. Cozinha autêntica desde 1985.',
-    images: ['/images/hero_bg.png'],
+    images: ['/images/hero_bg.webp'],
   },
   robots: {
     index: true,
@@ -89,7 +89,7 @@ const jsonLd = {
   ],
   servesCuisine: ['Portuguese', 'Alentejana'],
   priceRange: '€€',
-  image: '/images/hero_bg.png',
+  image: '/images/hero_bg.webp',
 }
 
 export default function RootLayout({
