@@ -51,6 +51,7 @@ export const metadata: Metadata = {
     canonical: 'https://costeletadourada.pt',
   },
   icons: {
+    icon: '/icon.png',
     apple: '/apple-touch-icon.png',
   },
 }
