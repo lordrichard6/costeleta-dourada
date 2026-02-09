@@ -1,7 +1,7 @@
 .section {
     padding: 8rem 0;
     position: relative;
-    background-image: linear-gradient(rgba(218, 165, 32, 0.9), rgba(218, 165, 32, 0.9)), url('/images/menu_bg.png');
+    background-image: linear-gradient(rgba(218, 165, 32, 0.9), rgba(218, 165, 32, 0.9)), url('/images/menu_bg.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

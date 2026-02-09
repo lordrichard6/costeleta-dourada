@@ -50,6 +50,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://costeletadourada.pt',
   },
+  icons: {
+    apple: '/apple-touch-icon.png',
+  },
 }
 
 // JSON-LD Structured Data
@@ -98,8 +101,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt">
-      <body className={clsx(cinzel.variable, inter.variable)}>
+    <html lang="pt" suppressHydrationWarning={true}>
+      <body className={clsx(cinzel.variable, inter.variable)} suppressHydrationWarning={true}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
