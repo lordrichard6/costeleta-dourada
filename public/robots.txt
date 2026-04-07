@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://costeletadourada.pt/sitemap.xml
+Sitemap: https://costeleta-dourada.vercel.app/sitemap.xml

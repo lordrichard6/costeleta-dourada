@@ -1,84 +1,102 @@
 .banner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: var(--color-earth);
-    color: var(--color-white);
-    padding: 1.5rem 2rem;
-    z-index: 9999;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--surface-2);
+  border-top: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 1.5rem 2rem;
+  z-index: 9999;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: wrap;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .text {
-    flex: 1;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    min-width: 280px;
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  min-width: 280px;
 }
 
 .link {
-    color: var(--color-gold);
-    text-decoration: underline;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 200ms ease;
 }
 
 .link:hover {
-    opacity: 0.8;
+  color: var(--text-primary);
 }
 
 .buttons {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-shrink: 0;
 }
 
 .decline {
-    padding: 0.75rem 1.5rem;
-    background: transparent;
-    border: 1px solid var(--color-white);
-    color: var(--color-white);
-    border-radius: 4px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
+  padding: 0.65rem 1.5rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: border-color 200ms ease, color 200ms ease;
 }
 
 .decline:hover {
-    background: rgba(255, 255, 255, 0.1);
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 .accept {
-    padding: 0.75rem 1.5rem;
-    background: var(--color-gold);
-    color: var(--color-earth);
-    border: none;
-    border-radius: 4px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
+  padding: 0.65rem 1.5rem;
+  background: var(--accent);
+  color: var(--background);
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background 200ms ease, transform 200ms ease;
 }
 
 .accept:hover {
-    transform: scale(1.02);
+  background: var(--text-primary);
+  transform: translateY(-1px);
 }
 
 @media (max-width: 600px) {
-    .content {
-        flex-direction: column;
-        text-align: center;
-    }
+  .content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.25rem;
+  }
 
-    .buttons {
-        width: 100%;
-        justify-content: center;
-    }
+  .buttons {
+    width: 100%;
+    justify-content: center;
+  }
 }

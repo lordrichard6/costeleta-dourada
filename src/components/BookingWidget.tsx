@@ -220,7 +220,7 @@ export default function BookingWidget() {
                                 </div>
                                 <h3>Reserva Confirmada!</h3>
                                 <p>Obrigado, {formData.name.split(' ')[0]}.</p>
-                                <p>Enviámos um email de confirmação para {formData.email}.</p>
+                                <p>A sua reserva foi registada com sucesso.</p>
                                 <button className={styles.resetButton} onClick={resetBooking}>
                                     Fazer outra reserva
                                 </button>

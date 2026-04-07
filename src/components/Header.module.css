@@ -1,129 +1,222 @@
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    transition: all 0.3s ease;
-    padding: 1.5rem 0;
-    background: transparent;
-    color: var(--color-white);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 60;
+  transition: background 400ms ease, border-color 400ms ease, padding 400ms ease,
+    backdrop-filter 400ms ease;
+  padding: 1.5rem 0;
+  background: transparent;
+  border-bottom: 1px solid rgba(200, 150, 90, 0);
 }
 
 .scrolled {
-    background: rgba(44, 36, 27, 0.95);
-    /* Earth color with opacity */
-    padding: 1rem 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
+  background: rgba(20, 16, 9, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
 }
 
 .logo {
-    font-family: var(--font-heading);
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--color-gold);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    display: flex;
-    align-items: center;
-    text-shadow: 0 0 15px rgba(218, 165, 32, 0.5), 0 0 30px rgba(218, 165, 32, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
 }
 
 .logoImg {
-    filter: drop-shadow(0 0 8px rgba(218, 165, 32, 0.6));
-    width: auto;
-    height: auto;
+  border-radius: 2px;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
-.logoWrapper {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+.logoText {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+  line-height: 1;
+  white-space: nowrap;
 }
-
-/* Filter removed to show original logo colors */
 
 .desktopNav {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
 }
 
-.desktopNav a {
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: color 0.2s;
+.navLink {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  transition: color 200ms ease;
+  position: relative;
 }
 
-.desktopNav a:hover {
-    color: var(--color-gold);
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 250ms ease;
 }
 
-.ctaButton {
-    background: var(--color-gold);
-    color: var(--color-earth) !important;
-    padding: 0.5rem 1.5rem;
-    border-radius: 2px;
-    font-weight: 700 !important;
-    transition: transform 0.2s;
+.navLink:hover {
+  color: var(--text-primary);
 }
 
-.ctaButton:hover {
-    background: var(--color-gold-hover);
-    transform: translateY(-2px);
+.navLink:hover::after {
+  width: 100%;
 }
+
+.navCTA {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--background);
+  background: var(--accent);
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radius);
+  transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+  display: inline-block;
+}
+
+.navCTA:hover {
+  background: var(--text-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-accent);
+}
+
+/* ── Mobile toggle ── */
 
 .mobileToggle {
-    display: none;
-    color: white;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  border: none;
 }
 
+.bar {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--text-primary);
+  border-radius: 1px;
+  transition: transform 300ms ease, opacity 300ms ease, width 300ms ease;
+  transform-origin: center;
+}
+
+.mobileToggle .bar:nth-child(2) {
+  width: 18px;
+}
+
+.open .bar:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+  width: 24px;
+}
+
+.open .bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.open .bar:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+  width: 24px;
+}
+
+/* ── Mobile nav overlay ── */
+
 .mobileNav {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: var(--color-earth);
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(20, 16, 9, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 55;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+}
+
+.mobileNav nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.mobileNavLink {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  text-align: center;
+  letter-spacing: 1px;
+  transition: color 200ms ease;
+  display: block;
+}
+
+.mobileNavLink:hover {
+  color: var(--accent);
+}
+
+.mobileNavCTA {
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0.75rem 2rem;
+  font-size: 1.5rem;
+  border-radius: var(--radius);
+  margin-top: 0.5rem;
+  transition: background 200ms ease, color 200ms ease;
+}
+
+.mobileNavCTA:hover {
+  background: var(--accent);
+  color: var(--background);
 }
 
 @media (max-width: 768px) {
-    .desktopNav {
-        display: none;
-    }
+  .desktopNav {
+    display: none;
+  }
 
-    .mobileToggle {
-        display: block;
-    }
+  .mobileToggle {
+    display: flex;
+    z-index: 65;
+  }
 
-    .logo {
-        font-size: 1rem;
-        letter-spacing: 1px;
-    }
-
-    .logoWrapper {
-        gap: 0.5rem;
-    }
-
-    .logoImg {
-        width: 40px !important;
-        height: 40px !important;
-    }
+  .logoText {
+    font-size: 1.1rem;
+  }
 }

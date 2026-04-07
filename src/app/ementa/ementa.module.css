@@ -1,0 +1,381 @@
+.page {
+  background: var(--background);
+  min-height: 100vh;
+}
+
+/* ── Hero ── */
+
+.hero {
+  background: var(--surface);
+  padding: 10rem 3rem 5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.heroEyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--accent);
+}
+
+.heroTitle {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1;
+}
+
+.heroLine {
+  width: 48px;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* ── Tab bar ── */
+
+.tabBarWrap {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(20, 16, 9, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.tabBar {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tabBar::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  position: relative;
+  padding: 1.1rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  transition: color 200ms ease;
+  background: none;
+  border: none;
+  flex-shrink: 0;
+}
+
+.tab:hover {
+  color: var(--text-primary);
+}
+
+.tabActive {
+  color: var(--text-primary);
+}
+
+.tabIndicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px 1px 0 0;
+}
+
+/* ── Content ── */
+
+.content {
+  padding: 4rem 0 8rem;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+.sectionIntro {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  font-style: italic;
+}
+
+/* ── Daily specials grid ── */
+
+.specialsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.specialCard {
+  background: var(--surface);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transition: background 200ms ease;
+}
+
+.specialCard:hover {
+  background: var(--surface-2);
+}
+
+.specialHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.specialDay {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+
+.specialPrice {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.specialDish {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.specialDesc {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.specialToggle {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-muted);
+  background: none;
+  border: none;
+  padding: 0;
+  transition: color 200ms ease;
+  text-align: left;
+}
+
+.specialToggle:hover {
+  color: var(--accent);
+}
+
+.specialExpanded {
+  overflow: hidden;
+}
+
+.specialExpandedText {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Menu list ── */
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.menuItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 1.75rem 2rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  transition: background 200ms ease;
+}
+
+.menuItem:last-child {
+  border-bottom: none;
+}
+
+.menuItem:hover {
+  background: var(--surface-2);
+}
+
+.menuItemLeft {
+  flex: 1;
+}
+
+.menuItemName {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.4rem;
+}
+
+.menuItemDesc {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.menuItemPrice {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent);
+  flex-shrink: 0;
+  padding-top: 0.3rem;
+}
+
+/* ── Wine cards ── */
+
+.wineList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.wineCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 2.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  transition: background 200ms ease;
+}
+
+.wineCard:last-child {
+  border-bottom: none;
+}
+
+.wineCard:hover {
+  background: var(--surface-2);
+}
+
+.wineInfo {
+  flex: 1;
+}
+
+.wineName {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.4rem;
+}
+
+.wineDesc {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.winePrice {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ── Mobile ── */
+
+@media (max-width: 900px) {
+  .specialsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .heroTitle {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 8rem 1.5rem 3.5rem;
+  }
+
+  .heroTitle {
+    font-size: 2.8rem;
+  }
+
+  .specialsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .menuItem {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .menuItemPrice {
+    padding-top: 0;
+  }
+
+  .wineCard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}

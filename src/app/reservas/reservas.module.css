@@ -1,0 +1,483 @@
+.page {
+  min-height: 100vh;
+  background: var(--background);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 8rem 1.5rem 5rem;
+  position: relative;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(200, 150, 90, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Card ── */
+
+.card {
+  position: relative;
+  z-index: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  width: 100%;
+  max-width: 560px;
+  padding: 3rem;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Progress ── */
+
+.progress {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.progressStep {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.progressStep:last-child {
+  flex: 0;
+}
+
+.progressDot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  flex-shrink: 0;
+  transition: border-color 300ms ease, background 300ms ease, color 300ms ease;
+}
+
+.progressDotActive {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--background);
+}
+
+.progressDotDone {
+  border-color: var(--accent);
+  background: transparent;
+  color: var(--accent);
+}
+
+.progressLine {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  margin: 0 6px;
+  transition: background 300ms ease;
+}
+
+.progressLineDone {
+  background: var(--accent);
+}
+
+/* ── Step container ── */
+
+.stepWrap {
+  overflow: hidden;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  width: 100%;
+}
+
+.stepTitle {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.1;
+}
+
+.stepSub {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: -0.75rem;
+}
+
+/* ── Fields ── */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-secondary);
+}
+
+.input {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  width: 100%;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+  -webkit-appearance: none;
+  appearance: none;
+  color-scheme: dark;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(200, 150, 90, 0.12);
+}
+
+.input::placeholder {
+  color: var(--accent-muted);
+  opacity: 0.5;
+}
+
+.inputError {
+  border-color: #e05555;
+}
+
+.textarea {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  width: 100%;
+  resize: vertical;
+  min-height: 90px;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+  color-scheme: dark;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(200, 150, 90, 0.12);
+}
+
+.textarea::placeholder {
+  color: var(--accent-muted);
+  opacity: 0.5;
+}
+
+.error {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: #e05555;
+  font-style: italic;
+}
+
+/* ── Chips ── */
+
+.chipGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.occasionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.chip {
+  padding: 0.55rem 0.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  transition: border-color 200ms ease, background 200ms ease, color 200ms ease;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.chip:hover {
+  border-color: rgba(200, 150, 90, 0.4);
+  color: var(--text-primary);
+}
+
+.chipActive {
+  border-color: var(--accent);
+  background: rgba(200, 150, 90, 0.12);
+  color: var(--accent);
+}
+
+/* ── Checkboxes ── */
+
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  flex-shrink: 0;
+  margin-top: 1px;
+  accent-color: var(--accent);
+  color-scheme: dark;
+}
+
+.privacyLink {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 200ms ease;
+}
+
+.privacyLink:hover {
+  color: var(--text-primary);
+}
+
+/* ── Navigation ── */
+
+.navButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2.5rem;
+  gap: 1rem;
+}
+
+.backBtn {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  padding: 0.75rem 0;
+  transition: color 200ms ease;
+}
+
+.backBtn:hover {
+  color: var(--text-primary);
+}
+
+.nextBtn {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--background);
+  background: var(--accent);
+  padding: 0.9rem 2rem;
+  border-radius: var(--radius);
+  border: none;
+  transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+  margin-left: auto;
+}
+
+.nextBtn:hover {
+  background: var(--text-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-accent);
+}
+
+/* ── Confirmation step ── */
+
+.checkCircle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: rgba(200, 150, 90, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: var(--accent);
+  margin: 0 auto;
+}
+
+.summaryCard {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.refRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.refLabel {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+}
+
+.refValue {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 2px;
+}
+
+.summaryDivider {
+  height: 1px;
+  background: var(--border);
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.summaryLabel {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.summaryValue {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  text-align: right;
+}
+
+.backHomeBtn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius);
+  text-align: center;
+  transition: border-color 200ms ease, color 200ms ease, background 200ms ease;
+}
+
+.backHomeBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(200, 150, 90, 0.06);
+}
+
+/* ── Mobile ── */
+
+@media (max-width: 640px) {
+  .page {
+    padding: 6rem 1rem 4rem;
+  }
+
+  .card {
+    padding: 2rem 1.5rem;
+  }
+
+  .stepTitle {
+    font-size: 1.8rem;
+  }
+
+  .chipGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .occasionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .navButtons {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .nextBtn {
+    text-align: center;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .backBtn {
+    text-align: center;
+  }
+}

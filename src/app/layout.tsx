@@ -1,30 +1,46 @@
-import type { Metadata } from 'next'
-import { Cinzel, Inter } from 'next/font/google'
-import './globals.css'
-import clsx from 'clsx'
+import type { Metadata } from 'next';
+import { Cormorant_Garamond, DM_Sans } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
+import './globals.css';
+import { Providers } from '@/components/Providers';
+import CustomCursor from '@/components/CustomCursor';
+import Grain from '@/components/Grain';
+import ScrollProgress from '@/components/ScrollProgress';
 
-const cinzel = Cinzel({
+const cormorantGaramond = Cormorant_Garamond({
   subsets: ['latin'],
-  variable: '--font-heading',
+  variable: '--font-display',
   display: 'swap',
-})
+  weight: ['400', '600', '700'],
+  style: ['normal', 'italic'],
+});
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ['latin'],
   variable: '--font-body',
   display: 'swap',
-})
+  weight: ['300', '400', '500'],
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://costeletadourada.pt'),
+  metadataBase: new URL('https://costeleta-dourada.vercel.app'),
   title: 'Costeleta Dourada | Sabor do Alentejo',
-  description: 'Restaurante tradicional Alentejano em Évora. Cozinha autêntica com pratos regionais, vinhos do Alentejo e ambiente acolhedor. Reservas: +351 266 123 456',
-  keywords: ['restaurante', 'Alentejo', 'Évora', 'comida tradicional', 'costeleta', 'cozinha portuguesa', 'reservas'],
+  description:
+    'Restaurante tradicional Alentejano em Évora. Cozinha autêntica com pratos regionais, vinhos do Alentejo e ambiente acolhedor. Reservas: +351 266 123 456',
+  keywords: [
+    'restaurante',
+    'Alentejo',
+    'Évora',
+    'comida tradicional',
+    'costeleta',
+    'cozinha portuguesa',
+    'reservas',
+  ],
   authors: [{ name: 'Costeleta Dourada' }],
   openGraph: {
     title: 'Costeleta Dourada | Sabor do Alentejo',
     description: 'Restaurante tradicional Alentejano em Évora. Cozinha autêntica desde 1985.',
-    url: 'https://costeletadourada.pt',
+    url: 'https://costeleta-dourada.vercel.app',
     siteName: 'Costeleta Dourada',
     locale: 'pt_PT',
     type: 'website',
@@ -48,21 +64,21 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: 'https://costeletadourada.pt',
+    canonical: 'https://costeleta-dourada.vercel.app',
   },
   icons: {
     icon: '/icon.png',
     apple: '/apple-touch-icon.png',
   },
-}
+  themeColor: '#141009',
+};
 
-// JSON-LD Structured Data
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Restaurant',
   name: 'Costeleta Dourada',
   description: 'Restaurante tradicional Alentejano com cozinha autêntica desde 1985.',
-  url: 'https://costeletadourada.pt',
+  url: 'https://costeleta-dourada.vercel.app',
   telephone: '+351 266 123 456',
   address: {
     '@type': 'PostalAddress',
@@ -94,22 +110,28 @@ const jsonLd = {
   servesCuisine: ['Portuguese', 'Alentejana'],
   priceRange: '€€',
   image: '/images/hero_bg.webp',
-}
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt" suppressHydrationWarning={true}>
-      <body className={clsx(cinzel.variable, inter.variable)} suppressHydrationWarning={true}>
+    <html
+      lang="pt"
+      suppressHydrationWarning={true}
+      className={`${cormorantGaramond.variable} ${dmSans.variable}`}
+    >
+      <body suppressHydrationWarning={true}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {children}
+        <Grain />
+        <CustomCursor />
+        <Providers>
+          <ScrollProgress />
+          {children}
+        </Providers>
+        <Analytics />
       </body>
     </html>
-  )
+  );
 }

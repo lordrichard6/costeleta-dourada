@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Costeleta Dourada
+
+Portfolio showcase website for a fictional traditional Alentejo restaurant based in Évora, Portugal.
+
+**Live:** https://costeleta-dourada.vercel.app/
+
+---
+
+## About
+
+A fully static marketing site built as a front-end portfolio piece. Demonstrates real-world restaurant website patterns: hero section, interactive menu with daily specials, animated testimonials carousel, multi-step booking widget, and RGPD-compliant legal pages.
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router, SSG)
+- **React:** 19
+- **Animations:** Framer Motion
+- **Icons:** Lucide React
+- **Fonts:** Cinzel + Inter via `next/font/google`
+- **Deployment:** Vercel
+- **Analytics:** Vercel Analytics
+
+## Features
+
+- Sticky header with scroll-aware styling and mobile menu
+- Full-screen hero with CSS parallax background
+- Interactive "Prato do Dia" grid with animated modal per day
+- Accordion-based full menu (7 categories)
+- Multi-step booking widget with availability simulation
+- Auto-scrolling testimonials carousel (respects `prefers-reduced-motion`)
+- Cookie consent banner with localStorage persistence
+- Privacy Policy + Terms & Conditions pages (RGPD-compliant)
+- JSON-LD Restaurant schema for SEO
+- Security headers via `next.config.ts`
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Notes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- The booking widget is a UI-only simulation — no backend or email service is connected.
+- All restaurant data (name, address, phone, menu prices) is fictional.
