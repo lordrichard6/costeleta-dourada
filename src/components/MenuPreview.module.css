@@ -1,0 +1,395 @@
+.section {
+  background: var(--background);
+  padding: 8rem 0 0;
+  border-top: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+/* ── Split header ── */
+
+.header {
+  display: flex;
+  align-items: flex-end;
+  gap: 4rem;
+  margin-bottom: 5rem;
+}
+
+.headerLeft {
+  position: relative;
+  flex: 0 0 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sectionNumber {
+  position: absolute;
+  top: -2.5rem;
+  right: -1rem;
+  font-family: var(--font-display);
+  font-size: 10rem;
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0.05;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Copper accent line ── */
+
+.accentLine {
+  width: 56px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+
+/* ── Eyebrow ── */
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--accent);
+}
+
+.eyebrowPrefix {
+  margin-right: 0.6rem;
+  opacity: 0.7;
+}
+
+/* ── Heading ── */
+
+.heading {
+  font-family: var(--font-display);
+  font-size: 3.4rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.headingText {
+  display: block;
+}
+
+/* ── Header body (right column) ── */
+
+.headerBody {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.85;
+  padding-bottom: 0.35rem;
+}
+
+/* ── Dish cards grid ── */
+
+.dishes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+  overflow: hidden;
+  padding: 1rem 0.5rem 2rem;
+  margin: 0 -0.5rem;
+}
+
+/* Outer parallax wrapper — carries the X transform */
+.dishCardParallax {
+  will-change: transform;
+}
+
+/* Middle card offset — breaks the mechanical grid rhythm */
+.dishCardOffset {
+  margin-top: 2.5rem;
+}
+
+/* Inner card — carries entrance + hover, never mixed with parallax */
+.dishCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+  transition: border-color 300ms ease, box-shadow 300ms ease;
+  cursor: default;
+}
+
+.dishCard:hover {
+  border-color: rgba(200, 150, 90, 0.35);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(200, 150, 90, 0.1);
+}
+
+/* ── Photo ── */
+
+.dishImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.img {
+  object-fit: cover;
+  object-position: center;
+  transition: transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.dishCard:hover .img {
+  transform: scale(1.06);
+}
+
+/* Copper gradient overlay */
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(20, 16, 9, 0.65) 0%,
+    rgba(200, 150, 90, 0.12) 50%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 400ms ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dishCard:hover .imageOverlay {
+  opacity: 1;
+}
+
+/* Hover micro-copy */
+.hoverCta {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  z-index: 2;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--text-primary);
+  opacity: 0;
+  transition: opacity 350ms ease, transform 350ms ease;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.dishCard:hover .hoverCta {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── Badge ── */
+
+.badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--background);
+  background: var(--accent);
+  padding: 0.3rem 0.75rem;
+  border-radius: 2px;
+}
+
+/* ── Content ── */
+
+.dishContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1.5rem 1.75rem 1.75rem;
+  flex: 1;
+}
+
+.dishName {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.dishDesc {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  flex: 1;
+}
+
+/* ── Card footer ── */
+
+.dishFooter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.footerLine {
+  flex: 1;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.25;
+  border-radius: 1px;
+}
+
+.dishPrice {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ── Full-width CTA strip ── */
+
+.ctaStrip {
+  margin-top: 5rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.ctaInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1.75rem 3rem;
+  transition: background 250ms ease;
+}
+
+.ctaInner:hover {
+  background: rgba(200, 150, 90, 0.04);
+}
+
+.ctaLabel {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--accent);
+  transition: color 200ms ease;
+}
+
+.ctaInner:hover .ctaLabel {
+  color: var(--text-primary);
+}
+
+.ctaDivider {
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.4;
+  flex-shrink: 0;
+}
+
+.ctaArrow {
+  font-size: 1rem;
+  color: var(--accent);
+  transition: transform 200ms ease, color 200ms ease;
+}
+
+.ctaInner:hover .ctaArrow {
+  transform: translateX(6px);
+  color: var(--text-primary);
+}
+
+/* ── Tablet ── */
+
+@media (max-width: 1024px) {
+  .heading {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .headerLeft {
+    flex: none;
+    width: 100%;
+  }
+
+  .dishes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dishCardParallax:last-child {
+    grid-column: 1 / -1;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .dishCardOffset {
+    margin-top: 0;
+  }
+
+  .heading {
+    font-size: 2.6rem;
+  }
+}
+
+/* ── Mobile ── */
+
+@media (max-width: 640px) {
+  .section {
+    padding: 5rem 0 0;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .dishes {
+    grid-template-columns: 1fr;
+  }
+
+  .dishCardParallax:last-child {
+    grid-column: auto;
+    max-width: none;
+    margin: 0;
+  }
+
+  .heading {
+    font-size: 2.2rem;
+  }
+
+  .ctaInner {
+    padding: 1.5rem 1.25rem;
+  }
+}

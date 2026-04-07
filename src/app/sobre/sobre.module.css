@@ -1,0 +1,830 @@
+.page {
+  background: var(--background);
+  min-height: 100vh;
+}
+
+/* ── Hero ── */
+
+.heroSection {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #0e0b06;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background video — symmetric inset prevents gap on all edges during parallax */
+
+.heroVideoWrap {
+  position: absolute;
+  inset: -12%;
+  will-change: transform;
+  z-index: 0;
+}
+
+.heroVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Overlays */
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to bottom, rgba(14, 11, 6, 0.65) 0%, rgba(14, 11, 6, 0.45) 50%, rgba(14, 11, 6, 0.75) 100%),
+    linear-gradient(to right, rgba(14, 11, 6, 0.2) 0%, transparent 30%, transparent 70%, rgba(14, 11, 6, 0.2) 100%);
+  pointer-events: none;
+}
+
+.heroGrain {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Content */
+
+.heroInner {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 760px;
+  padding: 5rem 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  text-align: center;
+  will-change: transform;
+}
+
+/* Eyebrow */
+
+.heroEyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--accent);
+}
+
+.heroEyebrowPrefix {
+  margin-right: 0.6rem;
+  opacity: 0.7;
+}
+
+/* Divider lines flanking the quote */
+
+.heroDivider {
+  width: 100%;
+  max-width: 280px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--accent) 30%,
+    var(--accent) 70%,
+    transparent 100%
+  );
+}
+
+/* Quote */
+
+.heroQuote {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin: 0;
+  text-shadow: 0 2px 48px rgba(0, 0, 0, 0.6);
+}
+
+/* Decorative drop-quote — large copper " behind the text */
+.heroQuote::before {
+  content: '\201C';
+  position: absolute;
+  top: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: 14rem;
+  font-weight: 700;
+  font-style: normal;
+  color: var(--accent);
+  opacity: 0.07;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
+}
+
+/* Attribution */
+
+.heroAttribution {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--accent);
+  opacity: 0.85;
+}
+
+.heroAttributionDash {
+  margin-right: 0.5rem;
+  opacity: 0.6;
+  font-style: normal;
+}
+
+/* Scroll indicator */
+
+.heroScrollIndicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: fit-content;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.scrollDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.7;
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.7; }
+  50% { transform: translateY(6px); opacity: 0.4; }
+}
+
+.scrollLabel {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+/* Mute button */
+
+.heroMuteBtn {
+  position: absolute;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  z-index: 4;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(14, 11, 6, 0.6);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 200ms ease, border-color 200ms ease, background 200ms ease;
+}
+
+.heroMuteBtn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(14, 11, 6, 0.85);
+}
+
+/* ── Shared ── */
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.sectionHeading {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.15;
+  margin: 0;
+  min-height: 1.15em;
+}
+
+.bodyText {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* ── História ── */
+
+.historiaSection {
+  padding: 8rem 0;
+}
+
+.historiaContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 6rem;
+}
+
+.historiaText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Copper accent line — matches other sections */
+.historiaAccentLine {
+  width: 48px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+
+.historiaHeading {
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin: 0;
+  min-height: 1.1em;
+}
+
+
+.splitHeading {
+  display: block;
+}
+
+/* Pull-quote treatment on first paragraph */
+.historiaParagraphFirst {
+  border-left: 2px solid rgba(200, 150, 90, 0.4);
+  padding-left: 1.25rem;
+}
+
+.historiaImage {
+  flex: 0 0 45%;
+}
+
+.historiaImgFrame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Decorative inset copper frame */
+.historiaImgFrame::before {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(200, 150, 90, 0.25);
+  border-radius: calc(var(--radius) - 2px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Parallax inner wrapper — oversized inset provides buffer for movement */
+.historiaImgParallax {
+  position: absolute;
+  inset: -8%;
+  will-change: transform;
+}
+
+.historiaImg {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ── Filosofia ── */
+
+.filosofiaSection {
+  position: relative;
+  padding: 8rem 0;
+  overflow: hidden;
+  background: #0e0b06;
+}
+
+/* Background video */
+
+.filosofiaVideoWrap {
+  position: absolute;
+  inset: -12%;
+  will-change: transform;
+  z-index: 0;
+}
+
+.filosofiaVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Overlays */
+
+.filosofiaOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to bottom, rgba(14, 11, 6, 0.82) 0%, rgba(14, 11, 6, 0.72) 50%, rgba(14, 11, 6, 0.88) 100%);
+  pointer-events: none;
+}
+
+.filosofiaGrain {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Content */
+
+.filosofiaContainer {
+  position: relative;
+  z-index: 3;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  will-change: transform;
+}
+
+.filosofiaHeader {
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Override shared eyebrow margin inside this header */
+.filosofiaHeader .eyebrow {
+  margin-bottom: 0;
+}
+
+.filosofiaAccentLine {
+  width: 48px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+
+/* Mute button */
+
+.filosMuteBtn {
+  position: absolute;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  z-index: 4;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(14, 11, 6, 0.6);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 200ms ease, border-color 200ms ease, background 200ms ease;
+}
+
+.filosMuteBtn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(14, 11, 6, 0.85);
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.valueCard {
+  background: rgba(30, 22, 16, 0.72);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  border: 1px solid rgba(200, 150, 90, 0.15);
+  border-radius: var(--radius);
+  transition: background 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+  cursor: default;
+}
+
+.valueCard:hover {
+  background: rgba(44, 32, 24, 0.85);
+  border-color: rgba(200, 150, 90, 0.35);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.valueCard:hover .valueDivider {
+  opacity: 1;
+}
+
+.valueNumber {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--accent);
+  opacity: 0.35;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.valueDivider {
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.5;
+  transition: opacity 200ms ease;
+}
+
+.valueTitle {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.valueDesc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ── Equipa ── */
+
+.teamSection {
+  background:
+    radial-gradient(ellipse at center, rgba(44, 32, 24, 0.6) 0%, var(--background) 70%),
+    var(--background);
+  padding: 8rem 0;
+}
+
+.teamContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+.teamHeader {
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Override shared eyebrow margin inside this header */
+.teamHeader .eyebrow {
+  margin-bottom: 0;
+}
+
+.teamAccentLine {
+  width: 48px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.teamCardParallax {
+  will-change: transform;
+}
+
+.teamCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+  cursor: default;
+}
+
+.teamCard:hover {
+  border-color: rgba(200, 150, 90, 0.3);
+  box-shadow: var(--shadow-accent);
+}
+
+.teamAvatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-2);
+  flex-shrink: 0;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.teamCard:hover .teamAvatar {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(200, 150, 90, 0.12);
+}
+
+.teamInitial {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.teamName {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.teamRole {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--accent);
+}
+
+.teamRoleDivider {
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.4;
+  flex-shrink: 0;
+}
+
+.teamDesc {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ── CTA ── */
+
+.ctaSection {
+  background:
+    radial-gradient(ellipse at center top, rgba(200, 150, 90, 0.07) 0%, transparent 60%),
+    linear-gradient(to bottom, var(--surface-2) 0%, var(--background) 100%);
+  padding: 8rem 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.ctaInner {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Accent line — centred for this section */
+.ctaAccentLine {
+  width: 48px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+
+/* Eyebrow */
+.ctaEyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--accent);
+}
+
+.ctaEyebrowPrefix {
+  margin-right: 0.6rem;
+  opacity: 0.6;
+}
+
+/* Heading */
+.ctaHeading {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.ctaSub {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+}
+
+/* Button row */
+.ctaBtnWrap {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+/* Primary button */
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--background);
+  background: var(--accent);
+  padding: 1rem 2.5rem;
+  border-radius: var(--radius);
+  transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+
+.ctaBtn:hover {
+  background: var(--text-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-accent);
+}
+
+.ctaBtnArrow {
+  transition: transform 200ms ease;
+  flex-shrink: 0;
+}
+
+.ctaBtn:hover .ctaBtnArrow {
+  transform: translateX(4px);
+}
+
+/* Secondary ghost button */
+.ctaSecondaryBtn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  padding: 1rem 2.5rem;
+  border-radius: var(--radius);
+  transition: color 200ms ease, border-color 200ms ease, background 200ms ease;
+}
+
+.ctaSecondaryBtn:hover {
+  color: var(--accent);
+  border-color: rgba(200, 150, 90, 0.4);
+  background: rgba(200, 150, 90, 0.05);
+}
+
+/* ── Mobile ── */
+
+/* ── Landscape mobile — prevent content/button overlap ── */
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .heroInner {
+    padding-top: 4rem;
+    gap: 1.5rem;
+  }
+
+  .heroQuote {
+    font-size: 2.8rem;
+  }
+
+  .heroScrollIndicator {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .heroQuote {
+    font-size: 3rem;
+  }
+
+  .historiaContainer {
+    flex-direction: column;
+    gap: 3rem;
+    padding: 0 1.5rem;
+  }
+
+  .historiaImage {
+    flex: none;
+    width: 100%;
+  }
+
+  .historiaImgFrame {
+    aspect-ratio: 3 / 2;
+  }
+
+  .historiaSection {
+    padding: 5rem 0;
+  }
+
+  .valuesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .teamGrid {
+    grid-template-columns: 1fr;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .teamContainer {
+    padding: 0 1.5rem;
+  }
+
+  .filosofiaContainer {
+    padding: 0 1.5rem;
+  }
+
+  .sectionHeading {
+    font-size: 2.2rem;
+  }
+
+  .ctaHeading {
+    font-size: 2.5rem;
+  }
+}

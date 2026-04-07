@@ -1,163 +1,361 @@
+/* ── Layout ── */
+
 .hero {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    background-image: url('/images/hero_bg.webp');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    /* Parallax effect */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: var(--color-white);
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  background: var(--background);
 }
 
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 1;
+/* ── Left Panel ── */
+
+.leftPanel {
+  position: relative;
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10rem 5rem 5rem 6rem;
+  z-index: 2;
+  overflow: hidden;
 }
 
-.content {
-    position: relative;
-    z-index: 3;
-    max-width: 800px;
-    padding: 0 2rem;
-    animation: fadeInUp 1s ease-out;
-}
-
+/* Logo watermark — decorative behind text */
 .logoWatermark {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    opacity: 0.2;
-    pointer-events: none;
-    width: 100%;
-    max-width: 600px;
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
+  position: absolute;
+  bottom: -8%;
+  right: -10%;
+  width: 65%;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
 }
 
-.watermarkImage {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+.logoWatermarkImg {
+  width: 100%;
+  height: auto;
 }
 
-.subtitle {
-    display: block;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    color: var(--color-gold);
+/* Grain texture on left panel */
+.leftGrain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.028;
+  mix-blend-mode: overlay;
 }
+
+.leftInner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ── Decorative accent line ── */
+
+.accentLine {
+  width: 64px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+
+/* ── Eyebrow ── */
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--accent);
+}
+
+/* ── Title ── */
 
 .title {
-    font-size: 5rem;
-    margin-bottom: 1.5rem;
-    line-height: 1;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 0.92;
+  margin: 0;
 }
 
-.description {
-    font-size: 1.2rem;
-    margin-bottom: 3rem;
-    line-height: 1.6;
-    opacity: 0.9;
+.titleLine {
+  display: block;
+  font-size: 9.5rem;
+  color: var(--text-primary);
 }
+
+.titleLineAccent {
+  color: var(--accent);
+  font-style: italic;
+}
+
+/* ── Subtitle ── */
+
+.subtitle {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  max-width: 360px;
+}
+
+/* ── CTA Buttons ── */
 
 .actions {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .primaryBtn {
-    background: var(--color-gold);
-    color: var(--color-earth);
-    padding: 1rem 2.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    border: 2px solid var(--color-gold);
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--background);
+  background: var(--accent);
+  padding: 1rem 2rem;
+  border-radius: var(--radius);
+  transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
 }
 
 .primaryBtn:hover {
-    background: transparent;
-    color: var(--color-gold);
+  background: var(--text-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-accent);
 }
 
 .secondaryBtn {
-    background: transparent;
-    color: var(--color-white);
-    padding: 1rem 2.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    border: 2px solid var(--color-white);
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  padding: 1rem 2rem;
+  border-radius: var(--radius);
+  transition: color 200ms ease, border-color 200ms ease, background 200ms ease;
 }
 
 .secondaryBtn:hover {
-    background: var(--color-white);
-    color: var(--color-earth);
+  color: var(--text-primary);
+  border-color: var(--accent);
+  background: rgba(200, 150, 90, 0.06);
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
+/* ── Scroll indicator ── */
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.scrollIndicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 1;
 }
 
-@media (max-width: 768px) {
-    .hero {
-        background-attachment: scroll;
-    }
+.scrollDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: bounceDot 1.8s ease-in-out infinite;
+}
 
-    .title {
-        font-size: 2.2rem;
-    }
+.scrollLabel {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--text-secondary);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
 
-    .subtitle {
-        font-size: 0.75rem;
-        letter-spacing: 2px;
-    }
+/* ── Copper divider ── */
 
-    .description {
-        font-size: 1rem;
-        margin-bottom: 2rem;
-    }
+.divider {
+  width: 2px;
+  background: var(--accent);
+  opacity: 0.4;
+  flex-shrink: 0;
+  align-self: stretch;
+  z-index: 3;
+}
 
-    .logoWatermark {
-        max-width: 350px;
-    }
+/* ── Right Panel ── */
 
-    .actions {
-        flex-direction: column;
-        gap: 1rem;
-    }
+.rightPanel {
+  position: relative;
+  width: 45%;
+  overflow: hidden;
+}
 
-    .primaryBtn,
-    .secondaryBtn {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.85rem;
-    }
+.videoWrap {
+  position: absolute;
+  inset: 0 -8%;
+  will-change: transform;
+}
+
+.heroVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Dark gradient overlay on video */
+.videoOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 16, 9, 0.18) 0%,
+    rgba(20, 16, 9, 0.08) 40%,
+    rgba(20, 16, 9, 0.32) 100%
+  ),
+  linear-gradient(
+    to left,
+    transparent 60%,
+    rgba(20, 16, 9, 0.25) 100%
+  );
+  pointer-events: none;
+}
+
+/* Mute / unmute button */
+.muteBtn {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(20, 16, 9, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 200ms ease, border-color 200ms ease, background 200ms ease;
+}
+
+.muteBtn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(20, 16, 9, 0.8);
+}
+
+/* ── Tablet ── */
+
+@media (max-width: 1100px) {
+  .titleLine {
+    font-size: 7.5rem;
+  }
+
+  .leftPanel {
+    padding: 10rem 3.5rem 5rem 4rem;
+  }
+}
+
+/* ── Mobile: video full-bleed behind text ── */
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    min-height: 100svh;
+  }
+
+  /* Video becomes full-bleed background */
+  .rightPanel {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .videoWrap {
+    position: absolute;
+    inset: 0;
+  }
+
+  /* Stronger overlay for readability on mobile */
+  .videoOverlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(20, 16, 9, 0.55) 0%,
+      rgba(20, 16, 9, 0.45) 50%,
+      rgba(20, 16, 9, 0.75) 100%
+    );
+  }
+
+  /* Left panel sits on top of the video */
+  .leftPanel {
+    position: relative;
+    width: 100%;
+    min-height: 100svh;
+    padding: 7rem 1.75rem 5rem;
+    z-index: 2;
+    justify-content: flex-end;
+    background: transparent;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .titleLine {
+    font-size: 5rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    max-width: 100%;
+  }
+
+  .scrollIndicator {
+    left: 1.75rem;
+    bottom: 2rem;
+  }
+
+  .muteBtn {
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .titleLine {
+    font-size: 4rem;
+  }
+
+  .leftPanel {
+    padding: 6rem 1.25rem 4rem;
+  }
 }

@@ -1,0 +1,257 @@
+.section {
+  background: var(--background);
+  padding: 8rem 0;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  display: flex;
+  align-items: center;
+  gap: 6rem;
+}
+
+/* ── Image panel ── */
+
+.imagePanel {
+  position: relative;
+  flex: 0 0 45%;
+}
+
+.imageParallax {
+  will-change: transform;
+}
+
+.imageFrame {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-accent);
+  aspect-ratio: 5 / 6;
+}
+
+/* Hover: subtle zoom on photo */
+.imageFrame:hover .imageInner {
+  transform: scale(1.04);
+}
+
+.imageInner {
+  width: 100%;
+  height: 100%;
+  transition: transform 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Decorative corner accents ── */
+
+.corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.cornerTL {
+  top: 14px;
+  left: 14px;
+  border-top: 1.5px solid var(--accent);
+  border-left: 1.5px solid var(--accent);
+}
+
+.cornerTR {
+  top: 14px;
+  right: 14px;
+  border-top: 1.5px solid var(--accent);
+  border-right: 1.5px solid var(--accent);
+}
+
+.cornerBL {
+  bottom: 14px;
+  left: 14px;
+  border-bottom: 1.5px solid var(--accent);
+  border-left: 1.5px solid var(--accent);
+}
+
+.cornerBR {
+  bottom: 14px;
+  right: 14px;
+  border-bottom: 1.5px solid var(--accent);
+  border-right: 1.5px solid var(--accent);
+}
+
+/* ── Section number ── */
+
+.sectionNumber {
+  position: absolute;
+  top: -3rem;
+  left: -2rem;
+  font-family: var(--font-display);
+  font-size: 12rem;
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0.07;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* ── Text panel ── */
+
+.textPanel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── Copper accent line ── */
+
+.accentLine {
+  width: 56px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+
+/* ── Eyebrow ── */
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--accent);
+}
+
+.eyebrowPrefix {
+  margin-right: 0.6rem;
+  opacity: 0.7;
+}
+
+/* ── Heading ── */
+
+.heading {
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.headingText {
+  display: block;
+}
+
+/* ── Body ── */
+
+.body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--text-secondary);
+}
+
+/* ── Pull quote ── */
+
+.pullQuote {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-primary);
+  border-left: 2px solid var(--accent);
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── CTA link ── */
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent);
+  margin-top: 0.5rem;
+  position: relative;
+  width: fit-content;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 300ms ease;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+.linkArrow {
+  transition: transform 200ms ease;
+}
+
+.link:hover .linkArrow {
+  transform: translateX(5px);
+}
+
+/* ── Mobile ── */
+
+@media (max-width: 900px) {
+  .section {
+    padding: 5rem 0;
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 3rem;
+    padding: 0 1.5rem;
+  }
+
+  .imagePanel {
+    flex: none;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .sectionNumber {
+    font-size: 7rem;
+    top: -2rem;
+    left: -1rem;
+  }
+
+  .heading {
+    font-size: 2.4rem;
+  }
+
+  .pullQuote {
+    font-size: 1.1rem;
+  }
+}

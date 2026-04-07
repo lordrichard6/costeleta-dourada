@@ -1,110 +1,352 @@
 .footer {
-    background-color: #1a1612;
-    /* Darker earth */
-    color: #888;
-    padding: 4rem 0 2rem;
+  background: var(--background);
+  color: var(--text-secondary);
+  padding: 5rem 0 3rem;
+  border-top: 1px solid var(--border);
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-bottom: 3rem;
+/* ── Wordmark row ── */
+
+.wordmarkRow {
+  max-width: 1280px;
+  margin: 0 auto 3rem;
+  padding: 0 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
 }
 
-.heading {
-    color: var(--color-white);
-    font-family: var(--font-heading);
-    margin-bottom: 1.5rem;
-    font-size: 1.2rem;
+.wordmarkEyebrow {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--accent);
+  opacity: 0.8;
 }
 
-.text {
-    margin-bottom: 0.5rem;
-    line-height: 1.6;
+/* Decorative wordmark — p tag, not a heading */
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  margin: 0;
 }
+
+.wordmarkLine {
+  width: 60px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+
+/* ── Copper separator between wordmark and grid ── */
+
+.sectionSep {
+  max-width: 1280px;
+  margin: 0 auto 3.5rem;
+  padding: 0 3rem;
+}
+
+.sectionSepLine {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    var(--accent) 0%,
+    rgba(200, 150, 90, 0.15) 60%,
+    transparent 100%
+  );
+  opacity: 0.4;
+}
+
+/* ── Grid ── */
+
+.grid {
+  max-width: 1280px;
+  margin: 0 auto 4rem;
+  padding: 0 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.colHeading {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--accent);
+  margin: 0;
+}
+
+.colList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0;
+  margin: 0;
+}
+
+.colLink {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  transition: color 200ms ease;
+  display: block;
+}
+
+.colLink:hover {
+  color: var(--accent);
+}
+
+/* ── Schedule ── */
+
+.scheduleItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.scheduleDay {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+}
+
+.scheduleTimes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.scheduleTime {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+.closed {
+  color: var(--accent-muted);
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+/* ── Socials ── */
 
 .socials {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
 }
 
-.socials a:hover {
-    color: var(--color-gold);
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-secondary);
+  transition: color 200ms ease, border-color 200ms ease, background 200ms ease;
 }
 
-.contactItem {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.8rem;
+.socialLink:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(200, 150, 90, 0.06);
 }
 
-.mapWrapper {
-    border-radius: 4px;
-    overflow: hidden;
+/* ── Map — min-height prevents layout shift while loading ── */
+
+.mapWrap {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  min-height: 180px;
+  background: var(--surface);
 }
+
+/* ── Divider — wrapper handles spacing, inner element handles animation ── */
+
+.dividerWrap {
+  max-width: 1280px;
+  margin: 0 auto 2.5rem;
+  padding: 0 3rem;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── Bottom bar ── */
 
 .bottom {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 2rem 0;
-    border-top: 1px solid #333;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.legalLinks {
-    display: flex;
-    gap: 2rem;
-}
-
-.legalLinks a {
-    font-size: 0.85rem;
-    transition: color 0.2s;
-}
-
-.legalLinks a:hover {
-    color: var(--color-gold);
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .copyright {
-    font-size: 0.8rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  margin: 0;
 }
+
+/* ── Internal nav links ── */
+
+.bottomNav {
+  display: flex;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.bottomNavLink {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  transition: color 200ms ease;
+  position: relative;
+}
+
+.bottomNavLink::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 250ms ease;
+}
+
+.bottomNavLink:hover {
+  color: var(--accent);
+}
+
+.bottomNavLink:hover::after {
+  width: 100%;
+}
+
+/* ── Bottom right: legal + credit ── */
+
+.bottomRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+}
+
+.legalLinks {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.legalLink {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  transition: color 200ms ease;
+}
+
+.legalLink:hover {
+  color: var(--accent);
+}
+
+.credit {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--accent-muted);
+  opacity: 0.7;
+  transition: opacity 200ms ease, color 200ms ease;
+  text-decoration: none;
+}
+
+.credit:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+/* ── Tablet ── */
 
 @media (max-width: 900px) {
-    .container {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
 }
 
+/* ── Bottom bar tablet — stack before it breaks ── */
+
+@media (max-width: 768px) {
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .bottomNav {
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+  }
+
+  .bottomRight {
+    align-items: flex-start;
+  }
+}
+
+/* ── Mobile ── */
+
 @media (max-width: 600px) {
-    .container {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
+  .footer {
+    padding: 4rem 0 2.5rem;
+  }
 
-    .contactItem {
-        justify-content: center;
-    }
+  .wordmark {
+    font-size: 2.2rem;
+  }
 
-    .socials {
-        justify-content: center;
-    }
+  .wordmarkRow,
+  .sectionSep,
+  .grid,
+  .dividerWrap,
+  .bottom {
+    padding: 0 1.5rem;
+  }
 
-    .bottom {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .legalLinks {
-        justify-content: center;
-    }
+  .grid {
+    grid-template-columns: 1fr;
+    margin-bottom: 3rem;
+  }
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { X, Calendar } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -86,9 +86,47 @@ const MENU_ITEMS = [
 export default function MenuSection() {
     const [selectedSpecial, setSelectedSpecial] = useState<typeof DAILY_SPECIALS[0] | null>(null);
     const [expandedCategory, setExpandedCategory] = useState<number | null>(0);
+    const closeButtonRef = useRef<HTMLButtonElement>(null);
+    const modalRef = useRef<HTMLDivElement>(null);
 
     const toggleCategory = (idx: number) => {
         setExpandedCategory(expandedCategory === idx ? null : idx);
+    };
+
+    // Move focus into modal when it opens
+    useEffect(() => {
+        if (selectedSpecial && closeButtonRef.current) {
+            closeButtonRef.current.focus();
+        }
+    }, [selectedSpecial]);
+
+    const handleModalKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+        if (e.key === 'Escape') {
+            setSelectedSpecial(null);
+            return;
+        }
+        if (e.key !== 'Tab' || !modalRef.current) return;
+
+        const focusable = Array.from(
+            modalRef.current.querySelectorAll<HTMLElement>(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            )
+        ).filter(el => !el.hasAttribute('disabled'));
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey) {
+            if (document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            }
+        } else {
+            if (document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
     };
 
     return (
@@ -124,14 +162,24 @@ export default function MenuSection() {
                     {selectedSpecial && (
                         <div className={styles.modalOverlay} onClick={() => setSelectedSpecial(null)}>
                             <motion.div
+                                ref={modalRef}
                                 className={styles.modalContent}
+                                role="dialog"
+                                aria-modal="true"
+                                aria-label={selectedSpecial.dish}
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.8 }}
                                 onClick={(e) => e.stopPropagation()}
+                                onKeyDown={handleModalKeyDown}
                             >
                                 <div className={styles.modalTextContent}>
-                                    <button className={styles.closeBtn} onClick={() => setSelectedSpecial(null)}>
+                                    <button
+                                        ref={closeButtonRef}
+                                        className={styles.closeBtn}
+                                        aria-label="Fechar"
+                                        onClick={() => setSelectedSpecial(null)}
+                                    >
                                         <X size={24} />
                                     </button>
                                     <h3 className={styles.modalDay}>{selectedSpecial.day}</h3>
@@ -157,6 +205,7 @@ export default function MenuSection() {
                             <button
                                 className={`${styles.accordionHeader} ${cat.className || ''} ${expandedCategory === idx ? styles.activeHeader : ''}`}
                                 onClick={() => toggleCategory(idx)}
+                                aria-expanded={expandedCategory === idx}
                             >
                                 <span className={styles.accordionTitle}>{cat.category}</span>
                                 <span className={styles.accordionIcon}>{expandedCategory === idx ? '−' : '+'}</span>
